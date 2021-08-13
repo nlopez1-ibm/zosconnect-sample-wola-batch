@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<zosConnectApi xmlns="http://www.ibm.com/zosConnect/2.0/zosConnectApi" id="CobolService">
+    <apiSpec title="CobolService" basePath="/CobolService" description="Sample APIs to interact with COBOL batch program using WOLA" version="1.0.0">
+        <path relativePath="/employee">
+            <method type="POST" zosConnectServiceRef="CobolService" httpXformFile="api/employee/POST/mapping.xml" operationId="postCobolService"/>
+            <method type="GET" zosConnectServiceRef="CobolService" httpXformFile="api/employee/GET/mapping.xml" operationId="getCobolService"/>
+            <method type="PUT" zosConnectServiceRef="CobolService" httpXformFile="api/employee/PUT/mapping.xml" operationId="putCobolService"/>
+            <method type="DELETE" zosConnectServiceRef="CobolService" httpXformFile="api/employee/DELETE/mapping.xml" operationId="deleteCobolService"/>
+        </path>
+        <apiDoc docType="SWAGGER">api-docs/swagger.json</apiDoc>
+    </apiSpec>
+</zosConnectApi>
