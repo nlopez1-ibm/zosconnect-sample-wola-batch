@@ -1,0 +1,13 @@
+---
+Manifest-Version: 1.0
+name: "CobolService"
+provider: "WOLA-1.0"
+factoryPid: "com.ibm.zosconnect.wola.service"
+requestSchema:
+  value: "file:///schemas/CobolService_request.json"
+  type: "JSONSchema"
+responseSchema:
+  value: "file:///schemas/CobolService_response.json"
+  type: "JSONSchema"
+providerProperties: []
+providerObjects: []

@@ -1,0 +1,351 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "Sample APIs to interact with COBOL batch program using WOLA",
+    "version" : "1.0.0",
+    "title" : "CobolService"
+  },
+  "host" : "localhost:8080",
+  "basePath" : "/CobolService",
+  "schemes" : [ "https", "http" ],
+  "consumes" : [ "application/json" ],
+  "produces" : [ "application/json" ],
+  "paths" : {
+    "/employee" : {
+      "get" : {
+        "operationId" : "getCobolService",
+        "parameters" : [ {
+          "name" : "Authorization",
+          "in" : "header",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "normal response",
+            "schema" : {
+              "$ref" : "#/definitions/getCobolService_response_200"
+            }
+          }
+        }
+      },
+      "post" : {
+        "operationId" : "postCobolService",
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "postCobolService_request",
+          "description" : "request body",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/postCobolService_request"
+          }
+        }, {
+          "name" : "Authorization",
+          "in" : "header",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "normal response",
+            "schema" : {
+              "$ref" : "#/definitions/postCobolService_response_200"
+            }
+          }
+        }
+      },
+      "put" : {
+        "operationId" : "putCobolService",
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "putCobolService_request",
+          "description" : "request body",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/putCobolService_request"
+          }
+        }, {
+          "name" : "Authorization",
+          "in" : "header",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "normal response",
+            "schema" : {
+              "$ref" : "#/definitions/putCobolService_response_200"
+            }
+          }
+        }
+      },
+      "delete" : {
+        "operationId" : "deleteCobolService",
+        "parameters" : [ {
+          "name" : "Authorization",
+          "in" : "header",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "normal response",
+            "schema" : {
+              "$ref" : "#/definitions/deleteCobolService_response_200"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "deleteCobolService_response_200" : {
+      "type" : "object",
+      "required" : [ "ZCONCBLOperationResponse" ],
+      "properties" : {
+        "ZCONCBLOperationResponse" : {
+          "type" : "object",
+          "properties" : {
+            "svc_resp_variables" : {
+              "type" : "object",
+              "properties" : {
+                "svc_resp_status" : {
+                  "type" : "object",
+                  "properties" : {
+                    "svc_resp_type" : {
+                      "type" : "string",
+                      "maxLength" : 10
+                    },
+                    "svc_resp_message" : {
+                      "type" : "string",
+                      "maxLength" : 50
+                    }
+                  },
+                  "required" : [ "svc_resp_message", "svc_resp_type" ]
+                }
+              },
+              "required" : [ "svc_resp_status" ]
+            }
+          },
+          "required" : [ "svc_resp_variables" ]
+        }
+      },
+      "description" : "Response schema for the ZCONCBL JSON interface"
+    },
+    "getCobolService_response_200" : {
+      "type" : "object",
+      "required" : [ "ZCONCBLOperationResponse" ],
+      "properties" : {
+        "ZCONCBLOperationResponse" : {
+          "type" : "object",
+          "properties" : {
+            "svc_resp_variables" : {
+              "type" : "object",
+              "properties" : {
+                "svc_resp_status" : {
+                  "type" : "object",
+                  "properties" : {
+                    "svc_resp_type" : {
+                      "type" : "string",
+                      "maxLength" : 10
+                    },
+                    "svc_resp_message" : {
+                      "type" : "string",
+                      "maxLength" : 50
+                    }
+                  },
+                  "required" : [ "svc_resp_message", "svc_resp_type" ]
+                },
+                "svc_resp_data" : {
+                  "type" : "object",
+                  "properties" : {
+                    "svc_resp_empname" : {
+                      "type" : "string",
+                      "maxLength" : 25
+                    },
+                    "svc_resp_email" : {
+                      "type" : "string",
+                      "maxLength" : 30
+                    },
+                    "svc_resp_phone" : {
+                      "type" : "string",
+                      "maxLength" : 20
+                    },
+                    "svc_resp_remarks" : {
+                      "type" : "string",
+                      "maxLength" : 40
+                    },
+                    "svc_resp_empid" : {
+                      "type" : "string",
+                      "maxLength" : 5
+                    }
+                  },
+                  "required" : [ "svc_resp_email", "svc_resp_empid", "svc_resp_empname", "svc_resp_phone", "svc_resp_remarks" ]
+                }
+              },
+              "required" : [ "svc_resp_data", "svc_resp_status" ]
+            }
+          },
+          "required" : [ "svc_resp_variables" ]
+        }
+      },
+      "description" : "Response schema for the ZCONCBL JSON interface"
+    },
+    "putCobolService_request" : {
+      "type" : "object",
+      "required" : [ "ZCONCBLOperation" ],
+      "properties" : {
+        "ZCONCBLOperation" : {
+          "type" : "object",
+          "properties" : {
+            "svc_rqst_variables" : {
+              "type" : "object",
+              "properties" : {
+                "svc_rqst_data" : {
+                  "type" : "object",
+                  "properties" : {
+                    "svc_rqst_email" : {
+                      "type" : "string",
+                      "maxLength" : 30
+                    },
+                    "svc_rqst_empid" : {
+                      "type" : "string",
+                      "maxLength" : 5
+                    },
+                    "svc_rqst_remarks" : {
+                      "type" : "string",
+                      "maxLength" : 40
+                    },
+                    "svc_rqst_empname" : {
+                      "type" : "string",
+                      "maxLength" : 25
+                    },
+                    "svc_rqst_phone" : {
+                      "type" : "string",
+                      "maxLength" : 20
+                    }
+                  },
+                  "required" : [ "svc_rqst_email", "svc_rqst_empid", "svc_rqst_empname", "svc_rqst_phone", "svc_rqst_remarks" ]
+                }
+              },
+              "required" : [ "svc_rqst_data" ]
+            }
+          },
+          "required" : [ "svc_rqst_variables" ]
+        }
+      },
+      "description" : "Request schema for the ZCONCBL JSON interface"
+    },
+    "postCobolService_request" : {
+      "type" : "object",
+      "required" : [ "ZCONCBLOperation" ],
+      "properties" : {
+        "ZCONCBLOperation" : {
+          "type" : "object",
+          "properties" : {
+            "svc_rqst_variables" : {
+              "type" : "object",
+              "properties" : {
+                "svc_rqst_data" : {
+                  "type" : "object",
+                  "properties" : {
+                    "svc_rqst_email" : {
+                      "type" : "string",
+                      "maxLength" : 30
+                    },
+                    "svc_rqst_empid" : {
+                      "type" : "string",
+                      "maxLength" : 5
+                    },
+                    "svc_rqst_remarks" : {
+                      "type" : "string",
+                      "maxLength" : 40
+                    },
+                    "svc_rqst_empname" : {
+                      "type" : "string",
+                      "maxLength" : 25
+                    },
+                    "svc_rqst_phone" : {
+                      "type" : "string",
+                      "maxLength" : 20
+                    }
+                  },
+                  "required" : [ "svc_rqst_email", "svc_rqst_empid", "svc_rqst_empname", "svc_rqst_phone", "svc_rqst_remarks" ]
+                }
+              },
+              "required" : [ "svc_rqst_data" ]
+            }
+          },
+          "required" : [ "svc_rqst_variables" ]
+        }
+      },
+      "description" : "Request schema for the ZCONCBL JSON interface"
+    },
+    "postCobolService_response_200" : {
+      "type" : "object",
+      "required" : [ "ZCONCBLOperationResponse" ],
+      "properties" : {
+        "ZCONCBLOperationResponse" : {
+          "type" : "object",
+          "properties" : {
+            "svc_resp_variables" : {
+              "type" : "object",
+              "properties" : {
+                "svc_resp_status" : {
+                  "type" : "object",
+                  "properties" : {
+                    "svc_resp_type" : {
+                      "type" : "string",
+                      "maxLength" : 10
+                    },
+                    "svc_resp_message" : {
+                      "type" : "string",
+                      "maxLength" : 50
+                    }
+                  },
+                  "required" : [ "svc_resp_message", "svc_resp_type" ]
+                }
+              },
+              "required" : [ "svc_resp_status" ]
+            }
+          },
+          "required" : [ "svc_resp_variables" ]
+        }
+      },
+      "description" : "Response schema for the ZCONCBL JSON interface"
+    },
+    "putCobolService_response_200" : {
+      "type" : "object",
+      "required" : [ "ZCONCBLOperationResponse" ],
+      "properties" : {
+        "ZCONCBLOperationResponse" : {
+          "type" : "object",
+          "properties" : {
+            "svc_resp_variables" : {
+              "type" : "object",
+              "properties" : {
+                "svc_resp_status" : {
+                  "type" : "object",
+                  "properties" : {
+                    "svc_resp_type" : {
+                      "type" : "string",
+                      "maxLength" : 10
+                    },
+                    "svc_resp_message" : {
+                      "type" : "string",
+                      "maxLength" : 50
+                    }
+                  },
+                  "required" : [ "svc_resp_message", "svc_resp_type" ]
+                }
+              },
+              "required" : [ "svc_resp_status" ]
+            }
+          },
+          "required" : [ "svc_resp_variables" ]
+        }
+      },
+      "description" : "Response schema for the ZCONCBL JSON interface"
+    }
+  }
+}
